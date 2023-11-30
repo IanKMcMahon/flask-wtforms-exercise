@@ -1,0 +1,20 @@
+{{% extends base.html %}}
+
+{{% block content %}}
+    <h1>Our Pets</h1>
+    <div>
+    {{% for pet in pets %}}
+    <div>
+    <a href="{{ url_for('edit_pet', pet_id=pet.id) }}"></a>
+    <img src="{{pet.photo_url() }}">
+    {{% if pet.available %}}
+    <b>Available</b>
+    {{endif}}
+    </div>
+    {{% else %}}
+    <h3>No Pets Currently</h3>
+    {{end for}}
+    </div>
+    <a href="/add">Add Pet</a>
+
+{{% endblock %}}
